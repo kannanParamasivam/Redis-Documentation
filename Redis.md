@@ -1,10 +1,10 @@
 # Redis #
 >Service / In-Memory key value store. 
->* Stored in **cache memory**
->* Can store million records under 130 KB
->* Can do 110,000 SETs and 81,000 GETs per second
->* Can be converted as **persistent database**
->* Developed using **C**
+> Stored in **cache memory**
+> Can store million records under 130 KB
+> Can do 110,000 SETs and 81,000 GETs per second
+> Can be converted as **persistent database**
+> Developed using **C**
 
 ## OS support
 >Redis **officialy supports Linux, Unix and Mac**. For windows, Widows open source developers created a wrapper and made it working in windows
@@ -16,72 +16,82 @@
     ![Install redis][redis_install_command]    
 
 ## Using Redis through CLI
-### Key Value oprations
-* Open Redis CLI   
+### Open Redis CLI   
 ![Open CLI][open_redis_cli_command]
-* Check if Redis is active   
+### Check if Redis is active   
 ![PING PONG][ping_pong]
-* Quit CLI   
+### Quit CLI   
 ![Quit CLI][quit_cli]
-* SET / GET Key Value   
+
+## Key Value oprations
+### SET / GET Key Value    
 ![Set Get Key Value][set_get_key_value]
-* Increment / Decrement value   
+### Increment / Decrement value   
 ![Increment / Decrement value][increment_decrement_value]
-* Check if a key exists, delete key value and delete all key values   
+### Check if a key exists, delete key value and delete all key values   
 ![EXISTS DEL FLUSHALL][exists_del_flushall]
-* Create group of key values in Key Space   
+### Create group of key values in Key Space   
 ![Create key within key space][key_space]
-* Set expiry of key value in seconds   
+### Set expiry of key value in seconds   
 ![Set expiry of key value][set_expiry_of_key_value]
-* Set expiry when creating key value pair  
+### Set expiry when creating key value pair  
 ![Create key value with expiration][set_expiration_when_creating_key_value_pair]
-* Persist expiring key value   
+### Persist expiring key value   
 ![Persist expiring key value][persist_expiring_key_value]
-* Set multiple Key Values   
+### Set multiple Key Values   
 ![Set multiple key values][mset]
-* Append value of any key   
+### Append value of any key   
 ![Append value of any key][append]
-* Rename any Key   
+### Rename any Key   
 ![Rename key][rename]
-* **Scan** for keys
-> * Scan in the cursor bases search where first time user passes cursor as 0 to start scan, the service returens next cursor value and result set, then the user have to pickup new cursor value and call scan command again. This will continue untill the cursor value returned by the service becomes 0 which mean full scan is completed.   
+### **Scan** for keys
+> ### Scan in the cursor bases search where first time user passes cursor as 0 to start scan, the service returens next cursor value and result set, then the user have to pickup new cursor value and call scan command again. This will continue untill the cursor value returned by the service becomes 0 which mean full scan is completed.   
 ![Scan with cursor][scan]   
 ![Scan with pattern match][scan_w_patternmatch]
- ### List operations
- * Create list and show entire list   
- !["Create List"][create_list]
-* Show part of the list
-* Push value to the begining of the list   
-![Push to the begining of the list][lpush]
-### Set operations
+## List operations
+### Create list and show entire list   
+!["Create List"][create_list]
+### Show part of the list. O(N)     
+![Show part of the list][lrange]
+### Get element **by index** O(1)      
+![Get element by index][lindex]
+### Push value to the head of the list. O(1)      
+![Push to the head of the list][lpush]
+### Push value to the tail of the list. O(1)     
+![Push value to the tail of the list][rpush]
+### Removes and returns first element of the list O(1)      
+![Removes and returns first element of the list][lpop]
+## Set operations
 > Sets are **unrodered** collection of **Unique strings**.
-> * Read, Write and Remove takes **O(1) time**
-> * Maximum **length** of set is **2^32 - 1** (i.e., 4 billion elements per set) 
-* Create / Add item(s) to set   
+> ### Read, Write and Remove takes **O(1) time**
+> ### Maximum **length** of set is **2^32 - 1** (i.e., 4 billion elements per set) 
+### Create / Add item(s) to set   
 ![Create / Add item(s) to set][sadd]
-* Check if a string **is member** of the set   
+### Check if a string **is member** of the set   
 Is Member comparison is **case sensitive**   
 ![Check if a string is member of the set][sismember]
-* **Show members** of the set   
-![Show members of the set][smembers]
-* **Scan** within a set with with and without pattern   
+### **Show members** of the set   
+### **Scan** within a set with with and without pattern   
 ![Scan within a set with and withou pattern][sscan]
-* **Show random member** from set   
+### **Show random member** from set   
 ![Show random member from set][srandmember]
-* Show **number of members** in set   
+### Show **number of members** in set   
 ![Shows number of members in set][scard]
-* **Move** member from one set to another   
+### **Move** member from one set to another   
 ![Move member from one list to another][smove]
-* **Remove** member(s) from set   
+### **Remove** member(s) from set   
 ![Removemember(s) from set][srem]
-* **POP random member** from set   
+### **POP random member** from set   
 ![POP random member from set][spop]
-* **Difference** between the elements in first set and all the remaining sets   
+### **Difference** between the elements in first set and all the remaining sets   
 ![Difference between the first set and elements in remaining sets][sdiff]
-* **Store the Difference** between elements in first set and elements in remaining sets   
+### **Store the Difference** between elements in first set and elements in remaining sets   
 ![Store the Difference between elements in first set and elements in remaining sets][sdiffstore]
-* **Intersection** between the sets and store results in another set   
+### **Intersection** between the sets and store results in another set   
 ![Intersection between the sets and store results in another set][sinterstore]
+### **Union of two sets** and / or store them into new set   
+![Union between two sets and / or store them into new set][sunion]
+
 
 
 
@@ -116,3 +126,8 @@ Is Member comparison is **case sensitive**
 [scan]: ./images/scan.JPG "scan for keys"
 [scan_w_patternmatch]: ./images/scan_w_patternmatch.JPG "Scan with pattern match"
 [sscan]: ./images/sscan.JPG "Scan within a set with and without pattern"
+[sunion]: ./images/sunion.JPG "Union between two sets and / or store them into new set"
+[lrange]: ./images/lrange.JPG "Show part of the list"
+[lindex]: ./images/lindex.JPG "Get element by index"
+[rpush]: ./images/rpush.JPG "Push item to the tail of the list"
+[lpop]: ./images/lpop.JPG "Removes and returns first element of the list"
